@@ -1,0 +1,195 @@
+{
+  "name": "GTM Claim Ledger",
+  "purpose": "Track all marketing and sales claims with evidence and approval tiers",
+  "icon": "📋",
+  "status": "active",
+  "properties": {
+    "Claim": {
+      "type": "title",
+      "description": "The claim statement in plain language",
+      "required": true
+    },
+    "Audience": {
+      "type": "multi_select",
+      "options": [
+        { "name": "GM", "color": "blue" },
+        { "name": "GSM", "color": "green" },
+        { "name": "IT", "color": "purple" },
+        { "name": "All", "color": "gray" }
+      ],
+      "description": "Target audience(s) for this claim",
+      "required": true
+    },
+    "Funnel Stage": {
+      "type": "select",
+      "options": [
+        { "name": "Top", "color": "blue" },
+        { "name": "Mid", "color": "yellow" },
+        { "name": "Bottom", "color": "green" }
+      ],
+      "description": "Where in the funnel this claim is most relevant",
+      "required": false
+    },
+    "Tier": {
+      "type": "select",
+      "options": [
+        { "name": "A - Public", "color": "green" },
+        { "name": "B - Sales Only", "color": "yellow" },
+        { "name": "C - Internal Only", "color": "red" }
+      ],
+      "description": "Where this claim can be used",
+      "required": true
+    },
+    "Confidence": {
+      "type": "select",
+      "options": [
+        { "name": "High", "color": "green" },
+        { "name": "Medium", "color": "yellow" },
+        { "name": "Low", "color": "red" }
+      ],
+      "description": "Confidence level in this claim",
+      "required": true
+    },
+    "Risk": {
+      "type": "select",
+      "options": [
+        { "name": "Low", "color": "green" },
+        { "name": "Medium", "color": "yellow" },
+        { "name": "High", "color": "red" }
+      ],
+      "description": "Risk level of making this claim externally",
+      "required": true
+    },
+    "Approved Phrasing": {
+      "type": "rich_text",
+      "description": "Safe version of the claim to use",
+      "required": true
+    },
+    "Bolder Phrasing": {
+      "type": "rich_text",
+      "description": "Optional stronger version (must still be true)",
+      "required": false
+    },
+    "Evidence Tags": {
+      "type": "rich_text",
+      "description": "Evidence supporting this claim (repo paths, notion pages, etc.)",
+      "required": true
+    },
+    "Verified": {
+      "type": "checkbox",
+      "description": "Whether this claim has been verified by stakeholder",
+      "required": false
+    },
+    "Pillar": {
+      "type": "select",
+      "options": [
+        { "name": "Heritage", "color": "blue" },
+        { "name": "Depth", "color": "green" },
+        { "name": "Compliance-First", "color": "purple" },
+        { "name": "Premium", "color": "orange" },
+        { "name": "Other", "color": "gray" }
+      ],
+      "description": "Which brand pillar this claim supports",
+      "required": false
+    },
+    "Used In": {
+      "type": "multi_select",
+      "options": [
+        { "name": "Website", "color": "blue" },
+        { "name": "One-Pager", "color": "green" },
+        { "name": "Battle Card", "color": "purple" },
+        { "name": "Talk Track", "color": "orange" },
+        { "name": "Demo", "color": "yellow" },
+        { "name": "Email", "color": "pink" }
+      ],
+      "description": "Where this claim is currently used",
+      "required": false
+    },
+    "Notes": {
+      "type": "rich_text",
+      "description": "What NOT to imply, caveats, context",
+      "required": false
+    },
+    "Created By": {
+      "type": "select",
+      "options": [
+        { "name": "/product-intel", "color": "blue" },
+        { "name": "/market-positioning", "color": "green" },
+        { "name": "/website-copy", "color": "purple" },
+        { "name": "/sales-enablement", "color": "orange" },
+        { "name": "/demo-architect", "color": "yellow" },
+        { "name": "Manual", "color": "gray" }
+      ],
+      "description": "Which agent or person created this claim",
+      "required": false
+    },
+    "Created": {
+      "type": "created_time",
+      "description": "When the claim was added",
+      "required": false
+    },
+    "Updated": {
+      "type": "last_edited_time",
+      "description": "When the claim was last modified",
+      "required": false
+    }
+  },
+  "suggestedViews": [
+    {
+      "name": "All Claims",
+      "description": "All claims sorted by tier",
+      "filter": null,
+      "sort": "Tier ascending, Claim ascending"
+    },
+    {
+      "name": "Tier A (Public)",
+      "description": "Claims safe for public use",
+      "filter": "Tier = 'A - Public'",
+      "sort": "Audience ascending, Claim ascending"
+    },
+    {
+      "name": "Tier B (Sales)",
+      "description": "Claims for sales conversations only",
+      "filter": "Tier = 'B - Sales Only'",
+      "sort": "Audience ascending, Claim ascending"
+    },
+    {
+      "name": "Tier C (Internal)",
+      "description": "Internal-only claims",
+      "filter": "Tier = 'C - Internal Only'",
+      "sort": "Claim ascending"
+    },
+    {
+      "name": "Unverified",
+      "description": "Claims needing verification",
+      "filter": "Verified = false AND Confidence = 'Low'",
+      "sort": "Created descending"
+    },
+    {
+      "name": "High Risk",
+      "description": "Claims with high risk rating",
+      "filter": "Risk = 'High'",
+      "sort": "Tier ascending"
+    },
+    {
+      "name": "By Audience - GM",
+      "description": "Claims for General Managers",
+      "filter": "Audience contains 'GM' OR Audience contains 'All'",
+      "sort": "Tier ascending"
+    },
+    {
+      "name": "By Audience - GSM",
+      "description": "Claims for General Sales Managers",
+      "filter": "Audience contains 'GSM' OR Audience contains 'All'",
+      "sort": "Tier ascending"
+    },
+    {
+      "name": "By Audience - IT",
+      "description": "Claims for IT/Technical buyers",
+      "filter": "Audience contains 'IT' OR Audience contains 'All'",
+      "sort": "Tier ascending"
+    }
+  ]
+}
+
+

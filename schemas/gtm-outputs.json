@@ -1,0 +1,182 @@
+{
+  "name": "GTM Outputs",
+  "purpose": "Track all generated GTM materials and their status",
+  "icon": "📦",
+  "status": "active",
+  "properties": {
+    "Name": {
+      "type": "title",
+      "description": "Name of the output document",
+      "required": true
+    },
+    "Type": {
+      "type": "select",
+      "options": [
+        { "name": "Intelligence Document", "color": "blue" },
+        { "name": "Positioning Brief", "color": "green" },
+        { "name": "Website Copy", "color": "purple" },
+        { "name": "One-Pager", "color": "orange" },
+        { "name": "Battle Card", "color": "yellow" },
+        { "name": "Talk Track", "color": "pink" },
+        { "name": "Email Template", "color": "red" },
+        { "name": "Demo Script", "color": "brown" },
+        { "name": "Glossary Export", "color": "gray" },
+        { "name": "Claims Export", "color": "default" }
+      ],
+      "description": "Type of output material",
+      "required": true
+    },
+    "Stage": {
+      "type": "select",
+      "options": [
+        { "name": "GTM-001 Intelligence", "color": "blue" },
+        { "name": "GTM-002 Positioning", "color": "green" },
+        { "name": "GTM-003a Website", "color": "purple" },
+        { "name": "GTM-003b Sales", "color": "orange" },
+        { "name": "GTM-003c Demo", "color": "yellow" }
+      ],
+      "description": "Which pipeline stage produced this",
+      "required": true
+    },
+    "Status": {
+      "type": "select",
+      "options": [
+        { "name": "Draft", "color": "gray" },
+        { "name": "In Review", "color": "yellow" },
+        { "name": "Approved", "color": "blue" },
+        { "name": "Published", "color": "green" },
+        { "name": "Deprecated", "color": "red" }
+      ],
+      "description": "Current status of the output",
+      "required": true
+    },
+    "Agent": {
+      "type": "select",
+      "options": [
+        { "name": "/product-intel", "color": "blue" },
+        { "name": "/market-positioning", "color": "green" },
+        { "name": "/website-copy", "color": "purple" },
+        { "name": "/sales-enablement", "color": "orange" },
+        { "name": "/demo-architect", "color": "yellow" }
+      ],
+      "description": "Which agent created this output",
+      "required": true
+    },
+    "Evidence Coverage": {
+      "type": "number",
+      "description": "Percentage of claims with evidence tags (0-100)",
+      "required": false
+    },
+    "Unverified Claims": {
+      "type": "number",
+      "description": "Count of unverified claims in this output",
+      "required": false
+    },
+    "Audience": {
+      "type": "multi_select",
+      "options": [
+        { "name": "GM", "color": "blue" },
+        { "name": "GSM", "color": "green" },
+        { "name": "IT", "color": "purple" },
+        { "name": "All", "color": "gray" }
+      ],
+      "description": "Target audience(s) for this output",
+      "required": false
+    },
+    "Version": {
+      "type": "rich_text",
+      "description": "Version number or identifier",
+      "required": false
+    },
+    "File Path": {
+      "type": "rich_text",
+      "description": "Path to the file in git repo (if stored there)",
+      "required": false
+    },
+    "Notes": {
+      "type": "rich_text",
+      "description": "Additional context, review notes, gaps",
+      "required": false
+    },
+    "Approved By": {
+      "type": "people",
+      "description": "Who approved this output",
+      "required": false
+    },
+    "Approval Date": {
+      "type": "date",
+      "description": "When this output was approved",
+      "required": false
+    },
+    "Created": {
+      "type": "created_time",
+      "description": "When the output was created",
+      "required": false
+    },
+    "Updated": {
+      "type": "last_edited_time",
+      "description": "When the output was last modified",
+      "required": false
+    }
+  },
+  "relations": {
+    "Project": {
+      "target": "Projects",
+      "targetDatabaseId": "2bda9407-04e0-81a7-b32f-ff56a6f9f036",
+      "type": "many-to-one",
+      "description": "Parent GTM project"
+    }
+  },
+  "suggestedViews": [
+    {
+      "name": "All Outputs",
+      "description": "All GTM outputs by stage",
+      "filter": null,
+      "sort": "Stage ascending, Name ascending"
+    },
+    {
+      "name": "By Status",
+      "description": "Outputs grouped by status",
+      "filter": null,
+      "sort": "Status ascending, Updated descending"
+    },
+    {
+      "name": "Needs Review",
+      "description": "Outputs awaiting review",
+      "filter": "Status = 'In Review'",
+      "sort": "Created ascending"
+    },
+    {
+      "name": "Published",
+      "description": "Published and active outputs",
+      "filter": "Status = 'Published'",
+      "sort": "Type ascending"
+    },
+    {
+      "name": "Low Evidence Coverage",
+      "description": "Outputs with evidence coverage below 80%",
+      "filter": "Evidence Coverage < 80",
+      "sort": "Evidence Coverage ascending"
+    },
+    {
+      "name": "Website Materials",
+      "description": "Website copy outputs",
+      "filter": "Stage = 'GTM-003a Website'",
+      "sort": "Type ascending"
+    },
+    {
+      "name": "Sales Materials",
+      "description": "Sales enablement outputs",
+      "filter": "Stage = 'GTM-003b Sales'",
+      "sort": "Type ascending"
+    },
+    {
+      "name": "Demo Materials",
+      "description": "Demo architecture outputs",
+      "filter": "Stage = 'GTM-003c Demo'",
+      "sort": "Type ascending"
+    }
+  ]
+}
+
+

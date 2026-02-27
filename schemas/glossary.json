@@ -1,0 +1,117 @@
+{
+  "name": "GTM Glossary",
+  "purpose": "Product vocabulary and naming conventions for CarBot GTM materials",
+  "icon": "📖",
+  "status": "active",
+  "properties": {
+    "Term": {
+      "type": "title",
+      "description": "Customer-facing term (canonical name)",
+      "required": true
+    },
+    "Internal Name(s)": {
+      "type": "rich_text",
+      "description": "Code names, internal terms, database field names",
+      "required": false
+    },
+    "Definition": {
+      "type": "rich_text",
+      "description": "Clear definition of what this term means",
+      "required": true
+    },
+    "Category": {
+      "type": "select",
+      "options": [
+        { "name": "Feature", "color": "blue" },
+        { "name": "Capability", "color": "green" },
+        { "name": "Integration", "color": "purple" },
+        { "name": "Persona", "color": "orange" },
+        { "name": "Process", "color": "yellow" },
+        { "name": "Technical", "color": "gray" }
+      ],
+      "description": "Type of term",
+      "required": false
+    },
+    "Where It Appears": {
+      "type": "multi_select",
+      "options": [
+        { "name": "UI Label", "color": "blue" },
+        { "name": "API Field", "color": "green" },
+        { "name": "Database", "color": "purple" },
+        { "name": "Config", "color": "orange" },
+        { "name": "Documentation", "color": "yellow" },
+        { "name": "Marketing", "color": "pink" }
+      ],
+      "description": "Where this term is used",
+      "required": false
+    },
+    "Approved": {
+      "type": "checkbox",
+      "description": "Whether this term is approved for external use",
+      "required": false
+    },
+    "Avoid": {
+      "type": "rich_text",
+      "description": "Synonyms or phrases to avoid (confusing or too technical)",
+      "required": false
+    },
+    "Notes": {
+      "type": "rich_text",
+      "description": "Additional context, common confusion, usage tips",
+      "required": false
+    },
+    "Evidence": {
+      "type": "rich_text",
+      "description": "Where this term is defined/used in codebase or docs",
+      "required": false
+    },
+    "Created By": {
+      "type": "select",
+      "options": [
+        { "name": "/product-intel", "color": "blue" },
+        { "name": "/market-positioning", "color": "green" },
+        { "name": "Manual", "color": "gray" }
+      ],
+      "description": "Which agent or person created this entry",
+      "required": false
+    },
+    "Created": {
+      "type": "created_time",
+      "description": "When the entry was created",
+      "required": false
+    },
+    "Updated": {
+      "type": "last_edited_time",
+      "description": "When the entry was last modified",
+      "required": false
+    }
+  },
+  "suggestedViews": [
+    {
+      "name": "All Terms",
+      "description": "All glossary terms alphabetically",
+      "filter": null,
+      "sort": "Term ascending"
+    },
+    {
+      "name": "By Category",
+      "description": "Terms grouped by category",
+      "filter": null,
+      "sort": "Category ascending, Term ascending"
+    },
+    {
+      "name": "Approved Only",
+      "description": "Terms approved for external use",
+      "filter": "Approved = true",
+      "sort": "Term ascending"
+    },
+    {
+      "name": "Needs Review",
+      "description": "Terms not yet approved",
+      "filter": "Approved = false",
+      "sort": "Created descending"
+    }
+  ]
+}
+
+
