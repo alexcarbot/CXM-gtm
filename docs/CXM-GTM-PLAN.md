@@ -6,6 +6,28 @@
 
 ---
 
+## Human Decisions — Resolved
+
+| Decision | Answer | Date |
+|----------|--------|------|
+| **Product Name** | **CarBot Cloud CXM** (full name — emphasizes platform identity) | 2026-02-26 |
+| **Audience Paths** | Role-based selector: *"I manage the operation"* vs. *"I work the leads"* | 2026-02-26 |
+| **Paid Tiers** | Not defined yet — "Contact your CarBot rep" for now | 2026-02-26 |
+| **Open-Source Status** | Stays **Tier C (Internal Only)** — not ready for external mention | 2026-02-26 |
+| **Customer Quotes** | Keep **anonymous** ("Dealer group operating partner, 10 rooftops") | 2026-02-26 |
+
+### Hero UI Themes — Generational Showcase (8 themes, 3 generations)
+
+| Generation | Label | Themes | Purpose |
+|-----------|-------|--------|---------|
+| **Seasoned Operators** (50+) | "The tools you already know" | Outlook, Gmail, Apple Mail | Familiar, zero learning curve, reassuring |
+| **Mid-Career Professionals** (30-50) | "The platforms you run your business on" | Salesforce, Power BI, Social Feed | Professional, data-oriented, modern but not flashy |
+| **Digital Natives** (under 30) | "The apps you actually use" | Discord, TikTok Feed, Apple Liquid Glass | Engaging, fast, feels like home |
+
+Marketing should showcase **one theme from each generation** in the primary hero (e.g., Outlook + Power BI + Discord), with the full gallery available on the product page.
+
+---
+
 ## Source Intelligence
 
 Two sales meeting transcripts provide the foundation:
@@ -245,12 +267,17 @@ These are the "wow" moments built from actual transcript demos:
 
 ## Next Steps
 
-1. **Human Review**: Confirm CXM naming (CarBot Cloud CXM vs. CarBot Cloud), identify hero UI themes for marketing, define paid value-add tiers
+~~1. **Human Review**: Naming, themes, paid tiers, open-source status, quote attribution~~ -- **RESOLVED** (see above)
+
 2. **Production Data**: As live dealer data accumulates, update claims from Tier B to Tier A with real metrics
-3. **Open-Source Announcement**: When public, move from Tier C to Tier A and update website/sales materials
+3. **Open-Source Announcement**: When public, move from Tier C to Tier A and update website/sales materials (currently locked as Internal Only per decision)
 4. **Notion Tracking**: Configure `.env` with Notion API token and run `npm run notion` to populate GTM databases
-5. **Stakeholder Review (Stage 4)**: Route materials through Marketing, Sales, Product, and Legal for sign-off
+5. **Stakeholder Review (Stage 4)**: Route materials through Marketing, Sales, Product, and Legal for sign-off — key review items:
+   - HIPAA-grade claim (ClearMed pedigree applied to automotive context)
+   - Anonymous customer quotes (need confirmation they're safe without attribution)
+   - Competitive positioning table (Impel comparison based on transcript, not formal analysis)
 6. **Publication (Stage 5)**: Deploy web assets, train sales team on talk tracks, validate demo environment
+7. **Paid Tier Definition**: When ready, define pricing for CRM integration, AI persona development, and enterprise support — update pricing section across all materials
 
 ---
 
