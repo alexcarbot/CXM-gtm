@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CarBot Cloud CXM — One-Pager (GSM)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Prompt:wght@600;700&display=swap');
     @page { size: letter; margin: 0.5in; }
     @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      color: #1e293b;
+      font-family: 'Montserrat', -apple-system, sans-serif;
+      color: #353535;
       background: #fff;
       max-width: 8.5in;
       margin: 0 auto;
@@ -27,14 +27,25 @@
       align-items: flex-start;
       margin-bottom: 24px;
       padding-bottom: 16px;
-      border-bottom: 3px solid #3b82f6;
+      border-bottom: 3px solid #FFAD00;
     }
-    .header h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
-    .header h1 span { color: #3b82f6; }
-    .header .tagline { font-size: 14px; color: #64748b; margin-top: 4px; }
+    .header-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .header-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .header h1 { font-family: 'Prompt', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #1F2A56; }
+    .header h1 span { color: #48A9C5; }
+    .header .tagline { font-size: 14px; color: #5F6172; margin-top: 4px; }
     .header .badge {
-      background: #3b82f6;
-      color: #fff;
+      background: #FFAD00;
+      color: #1F2A56;
       padding: 6px 14px;
       border-radius: 6px;
       font-size: 11px;
@@ -45,24 +56,25 @@
     }
 
     .problem {
-      background: #f1f5f9;
-      border-radius: 8px;
+      background: #F0EEF5;
+      border-radius: 6px;
       padding: 16px 20px;
       margin-bottom: 20px;
     }
-    .problem h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #3b82f6; margin-bottom: 6px; }
-    .problem p { color: #475569; font-size: 12.5px; }
+    .problem h2 { font-family: 'Prompt', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #1F2A56; margin-bottom: 6px; }
+    .problem p { color: #5F6172; font-size: 12.5px; }
 
     .solution { margin-bottom: 20px; }
-    .solution h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #3b82f6; margin-bottom: 8px; }
-    .solution p { color: #475569; font-size: 12.5px; margin-bottom: 12px; }
+    .solution h2 { font-family: 'Prompt', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #1F2A56; margin-bottom: 8px; }
+    .solution p { color: #5F6172; font-size: 12.5px; margin-bottom: 12px; }
 
     .value-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 12.5px; }
     .value-table th {
       text-align: left;
       padding: 8px 10px;
-      background: #1e293b;
+      background: #1F2A56;
       color: #fff;
+      font-family: 'Prompt', sans-serif;
       font-weight: 600;
       font-size: 11px;
       text-transform: uppercase;
@@ -70,55 +82,55 @@
     }
     .value-table td {
       padding: 8px 10px;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid #E8E8E8;
       vertical-align: top;
     }
-    .value-table tr:nth-child(even) td { background: #f8fafc; }
+    .value-table tr:nth-child(even) td { background: #FFF8E8; }
 
     .highlight-box {
-      background: #fefce8;
-      border-left: 3px solid #f59e0b;
+      background: #FFF8E8;
+      border-left: 4px solid #FFAD00;
       padding: 12px 16px;
       margin-bottom: 20px;
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 6px 6px 0;
     }
-    .highlight-box h2 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #d97706; margin-bottom: 6px; }
-    .highlight-box p { color: #475569; font-size: 12.5px; }
+    .highlight-box h2 { font-family: 'Prompt', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #1F2A56; margin-bottom: 6px; }
+    .highlight-box p { color: #5F6172; font-size: 12.5px; }
 
     .proof {
-      background: #eff6ff;
-      border-left: 3px solid #3b82f6;
+      background: #E8F4F8;
+      border-left: 4px solid #48A9C5;
       padding: 12px 16px;
       margin-bottom: 20px;
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 6px 6px 0;
     }
-    .proof h2 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #3b82f6; margin-bottom: 6px; }
+    .proof h2 { font-family: 'Prompt', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #1F2A56; margin-bottom: 6px; }
     .proof ul { list-style: none; }
-    .proof li { padding: 3px 0; color: #334155; font-size: 12.5px; }
-    .proof li::before { content: '✓ '; color: #10b981; font-weight: 700; }
+    .proof li { padding: 3px 0; color: #32344A; font-size: 12.5px; }
+    .proof li::before { content: '✓ '; color: #2E7D32; font-weight: 700; }
 
     .quote {
-      border-top: 1px solid #e2e8f0;
+      border-top: 1px solid #E8E8E8;
       padding-top: 12px;
       margin-bottom: 16px;
     }
-    .quote blockquote { font-style: italic; color: #334155; font-size: 13px; margin-bottom: 4px; }
-    .quote cite { font-style: normal; font-size: 11px; color: #94a3b8; }
+    .quote blockquote { font-style: italic; color: #32344A; font-size: 13px; margin-bottom: 4px; }
+    .quote cite { font-style: normal; font-size: 11px; color: #8D8E9B; }
 
     .cta {
       text-align: center;
-      background: #1e293b;
+      background: #1F2A56;
       color: #fff;
       padding: 14px;
-      border-radius: 8px;
+      border-radius: 6px;
     }
     .cta p { font-size: 12px; }
-    .cta strong { color: #3b82f6; }
+    .cta strong { color: #FFAD00; }
 
     .footer-brand {
       text-align: center;
       font-size: 10px;
-      color: #94a3b8;
+      color: #8D8E9B;
       margin-top: 12px;
     }
   </style>
@@ -126,9 +138,12 @@
 <body>
 
 <div class="header">
-  <div>
-    <h1>Car<span>Bot</span> Cloud CXM</h1>
-    <div class="tagline">Every Lead. Every Time. Your Way.</div>
+  <div class="header-left">
+    <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot" class="header-logo">
+    <div>
+      <h1>Car<span>Bot</span> Cloud CXM</h1>
+      <div class="tagline">Every Lead. Every Time. Your Way.</div>
+    </div>
   </div>
   <div class="badge">Free for CarBot Clients</div>
 </div>

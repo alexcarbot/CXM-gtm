@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CarBot Cloud CXM | Free AI Dealer Experience Platform</title>
   <meta name="description" content="Unify every call, text, email, and AI conversation in one platform with ~20 interface themes. Free for CarBot dealer clients. Purpose-built for automotive.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,7 +12,11 @@
 <!-- ── Navigation ── -->
 <nav class="nav">
   <div class="container">
-    <a href="index.html" class="nav-brand">Car<span>Bot</span> Cloud CXM</a>
+    <a href="index.html" class="nav-logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="wordmark">CarBot</span>
+      <span class="product-label">Cloud CXM</span>
+    </a>
     <div class="nav-links">
       <a href="product.html">Product</a>
       <a href="#features">Features</a>
@@ -33,7 +35,7 @@
       Free for CarBot Clients
     </div>
 
-    <h1>One Platform.<br><span class="accent">Your Way.</span></h1>
+    <h1>One Platform.<br><span class="accent">Your&nbsp;Way.</span></h1>
 
     <p class="subtitle">
       Every call, text, email, and AI conversation across every rooftop — unified in the interface each team member already knows.
@@ -51,11 +53,10 @@
       </button>
     </div>
 
-    <!-- Dynamic content based on role selection -->
     <div id="role-manage" class="role-content">
       <div class="btn-group">
         <a href="#" class="btn btn-primary">See the Platform</a>
-        <a href="#" class="btn btn-secondary">Watch a 2-Minute Walkthrough</a>
+        <a href="#" class="btn btn-outline">Watch a 2-Minute Walkthrough</a>
       </div>
     </div>
     <div id="role-leads" class="role-content" style="display:none;">
@@ -266,6 +267,7 @@
         <li>10DLC, CNAM, STIR/SHAKEN compliance</li>
       </ul>
       <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;">Talk to Your CarBot Rep</a>
+      <p style="margin-top:16px;font-size:0.75rem;color:var(--fog-steel);">Paid value-add: CRM integration, AI persona development, enterprise support</p>
     </div>
   </div>
 </section>
@@ -294,14 +296,14 @@
 
 <hr class="divider">
 
-<!-- ── CTA ── -->
-<section class="section" style="text-align:center;">
+<!-- ── CTA Band ── -->
+<section class="cta-band">
   <div class="container">
-    <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:16px;">One Platform. Your Way.</h2>
-    <p style="color:var(--color-text-muted);font-size:1.0625rem;margin-bottom:32px;">See CarBot Cloud CXM for yourself.</p>
+    <h2>One Platform. Your Way.</h2>
+    <p>See CarBot Cloud CXM for yourself.</p>
     <div class="btn-group">
       <a href="#" class="btn btn-primary">Schedule a Demo</a>
-      <a href="#" class="btn btn-secondary">Already a Client? Get Your Free Setup</a>
+      <a href="#" class="btn btn-outline" style="color:#fff;border-color:#fff;">Already a Client? Get Your Free Setup</a>
     </div>
   </div>
 </section>
@@ -309,8 +311,12 @@
 <!-- ── Footer ── -->
 <footer class="footer">
   <div class="container">
-    <p>CarBot Cloud CXM — Purpose-built for automotive. Compliance-first architecture. Free for clients.</p>
-    <p style="margin-top:8px;">© 2026 CarBot. All rights reserved.</p>
+    <p style="margin-bottom:8px;">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot" style="height:24px;vertical-align:middle;margin-right:8px;">
+      CarBot Cloud CXM
+    </p>
+    <p>Purpose-built for automotive. Compliance-first architecture. Free for clients.</p>
+    <p style="margin-top:8px;color:var(--fog-steel);">© 2026 CarBot. All rights reserved.</p>
   </div>
 </footer>
 
