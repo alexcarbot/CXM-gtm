@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarBot Cloud CXM — Go-To-Market Presentation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Prompt:wght@600;700&display=swap');
+
+    :root {
+      --honey: #FFAD00;
+      --honey-light: #FFF8E8;
+      --honey-amber: #F3B648;
+      --ocean-wave: #48A9C5;
+      --ocean-light: #E8F4F8;
+      --deep-navy: #1F2A56;
+      --navy-light: #F0EEF5;
+      --midnight-steel: #32344A;
+      --slate-pulse: #5F6172;
+      --tire-gray: #353535;
+      --fog-steel: #8D8E9B;
+      --cloud-alloy: #BBBBC3;
+      --success: #2E7D32;
+      --success-light: #E8F5E9;
+      --warning: #F5A623;
+      --border-gray: #E5E7EB;
+      --divider: #E8E8E8;
+      --light-gray: #F8F9FA;
+    }
+
+    @page {
+      size: 11in 8.5in;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--tire-gray);
+      background: #e8e8e8;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .slide { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; }
+    }
+
+    .slide {
+      width: 11in;
+      height: 8.5in;
+      margin: 20px auto;
+      padding: 60px 72px;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide:last-child { page-break-after: auto; }
+
+    /* Slide header bar */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid var(--honey);
+    }
+
+    .slide-header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-header .logo img { height: 32px; }
+
+    .slide-header .logo-text {
+      font-family: 'Prompt', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--deep-navy);
+    }
+
+    .slide-header .logo-text .product {
+      color: var(--ocean-wave);
+      font-weight: 600;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    .slide-header .slide-num {
+      font-family: 'Prompt', sans-serif;
+      font-size: 11px;
+      color: var(--fog-steel);
+    }
+
+    /* Typography */
+    h1 {
+      font-family: 'Prompt', sans-serif;
+      font-weight: 700;
+      color: var(--deep-navy);
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-family: 'Prompt', sans-serif;
+      font-weight: 700;
+      color: var(--deep-navy);
+      font-size: 28px;
+      letter-spacing: -0.015em;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-family: 'Prompt', sans-serif;
+      font-weight: 600;
+      color: var(--deep-navy);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    p { font-size: 15px; line-height: 1.65; color: var(--slate-pulse); }
+
+    .overline {
+      font-family: 'Prompt', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--honey);
+      margin-bottom: 8px;
+    }
+
+    /* Slide content helpers */
+    .slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .slide-body-top { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .four-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--light-gray);
+      border-left: 4px solid var(--ocean-wave);
+      border-radius: 6px;
+      padding: 20px 24px;
+    }
+
+    .card-honey { border-left-color: var(--honey); }
+    .card-navy { border-left-color: var(--deep-navy); }
+    .card-success { border-left-color: var(--success); }
+
+    .card h3 { font-size: 16px; margin-bottom: 6px; }
+    .card p { font-size: 13px; }
+
+    .card-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+
+    /* Stats */
+    .stat { text-align: center; padding: 24px; }
+    .stat-number {
+      font-family: 'Prompt', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--deep-navy);
+    }
+    .stat-label { font-size: 13px; color: var(--fog-steel); margin-top: 4px; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--deep-navy);
+      color: #fff;
+      font-family: 'Prompt', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .check { color: var(--success); font-weight: 600; }
+    .dash { color: var(--cloud-alloy); }
+
+    /* Quote */
+    .quote {
+      background: var(--light-gray);
+      border-left: 4px solid var(--ocean-wave);
+      border-radius: 0 6px 6px 0;
+      padding: 24px 32px;
+      margin: 16px 0;
+    }
+
+    .quote blockquote {
+      font-size: 22px;
+      font-style: italic;
+      color: var(--deep-navy);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .quote cite {
+      font-style: normal;
+      font-size: 13px;
+      color: var(--fog-steel);
+    }
+
+    /* Bullets */
+    ul { list-style: none; }
+    ul li {
+      padding: 6px 0;
+      font-size: 15px;
+      color: var(--slate-pulse);
+      position: relative;
+      padding-left: 20px;
+    }
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 8px;
+      height: 8px;
+      background: var(--honey);
+      border-radius: 50%;
+    }
+
+    /* Pill tags */
+    .pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-family: 'Prompt', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .pill-honey { background: var(--honey-light); color: var(--deep-navy); }
+    .pill-ocean { background: var(--ocean-light); color: var(--ocean-wave); }
+    .pill-navy { background: var(--navy-light); color: var(--deep-navy); }
+    .pill-success { background: var(--success-light); color: var(--success); }
+
+    /* Footer */
+    .slide-footer {
+      font-size: 10px;
+      color: var(--fog-steel);
+      text-align: right;
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    /* Title slide special */
+    .title-slide {
+      background: var(--deep-navy);
+      color: #fff;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title-slide h1 { color: #fff; font-size: 52px; margin-bottom: 12px; }
+    .title-slide h1 .accent { color: var(--honey); }
+    .title-slide p { color: var(--cloud-alloy); font-size: 18px; }
+    .title-slide .slide-header { border-bottom-color: var(--honey); }
+    .title-slide .slide-footer { color: var(--fog-steel); }
+
+    /* Section divider */
+    .section-divider {
+      background: linear-gradient(135deg, var(--deep-navy) 0%, var(--midnight-steel) 100%);
+      color: #fff;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .section-divider h1 { color: #fff; font-size: 44px; }
+    .section-divider p { color: var(--cloud-alloy); font-size: 16px; margin-top: 12px; }
+    .section-divider .overline { color: var(--honey); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 1: TITLE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide title-slide">
+  <div style="margin-bottom: 48px;">
+    <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot" style="height:64px;">
+  </div>
+  <h1>One Platform.<br><span class="accent">Your Way.</span></h1>
+  <p style="margin-top:16px;">CarBot Cloud CXM — Go-To-Market Plan</p>
+  <p style="margin-top: 40px; font-size:13px; color:var(--fog-steel);">February 2026 &nbsp;|&nbsp; Confidential</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 2: THE PROBLEM -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">02</div>
+  </div>
+  <div class="slide-body">
+    <div class="overline">The Problem</div>
+    <h2>Your Dealership Runs on 6 Systems.<br>None of Them Talk to Each Other.</h2>
+    <p style="font-size:17px; max-width:720px; margin-bottom:40px;">CRM for leads. DMS for deals. Call tracking for phones. A texting platform. An email tool. Maybe an AI product that pushes notes nobody reads.</p>
+
+    <div class="four-col">
+      <div class="stat">
+        <div class="stat-number">6+</div>
+        <div class="stat-label">Systems dealers switch between daily</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" style="color:var(--honey);">&lt;5s</div>
+        <div class="stat-label">CXM instant lead response</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">80%</div>
+        <div class="stat-label">Monthly active adoption on Coach</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" style="color:var(--success);">$0</div>
+        <div class="stat-label">Cost for CarBot clients</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 3: WHAT IS CXM -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">03</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Product Definition</div>
+    <h2>What Is CarBot Cloud CXM?</h2>
+    <p style="font-size:16px; max-width:780px; margin-bottom:32px;">A free, AI-native platform that sits on top of your existing CRM and DMS to unify all dealer communications and services in one place — in the interface each team member already knows.</p>
+
+    <div class="three-col">
+      <div class="card card-honey">
+        <span class="card-icon">🏠</span>
+        <h3>One House</h3>
+        <p>Every call, text, email, and AI conversation in a single timeline per customer.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎨</span>
+        <h3>Your Interface</h3>
+        <p>~20 UI themes designed for how people actually work. Outlook for GMs, Discord for BDC.</p>
+      </div>
+      <div class="card card-navy">
+        <span class="card-icon">🤖</span>
+        <h3>AI That Watches</h3>
+        <p>After every call, AI schedules appointments, completes tasks, and updates your CRM.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;">
+      <span class="pill pill-honey">Free for CarBot Clients</span>
+      <span class="pill pill-ocean" style="margin-left:8px;">VIN Solutions</span>
+      <span class="pill pill-ocean" style="margin-left:8px;">eLead</span>
+      <span class="pill pill-ocean" style="margin-left:8px;">DriveCentric</span>
+      <span class="pill pill-navy" style="margin-left:8px;">SSO</span>
+      <span class="pill pill-success" style="margin-left:8px;">HIPAA-Grade</span>
+    </div>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 4: DUAL AUDIENCE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">04</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Audience Strategy</div>
+    <h2>Two Audiences. One Platform.</h2>
+
+    <div class="two-col" style="margin-top:16px;">
+      <div>
+        <div style="background:var(--navy-light);border-radius:6px;padding:28px 32px;height:100%;">
+          <h3 style="font-size:20px;">"I manage the operation"</h3>
+          <p style="color:var(--fog-steel);font-size:13px;margin-bottom:16px;">GMs, Operating Partners, seasoned staff</p>
+          <ul>
+            <li>Cautious about AI — want familiarity first</li>
+            <li>UI: Outlook, Gmail, Apple Mail</li>
+            <li>Lead with consolidation, visibility, simplicity</li>
+            <li>Avoid AI-forward language, disruption framing</li>
+          </ul>
+          <div class="quote" style="margin-top:20px;background:#fff;">
+            <blockquote style="font-size:16px;">"I don't want to throw AI right into the mix."</blockquote>
+            <cite>— Charles Lovell, MAP Automotive</cite>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--ocean-light);border-radius:6px;padding:28px 32px;height:100%;">
+          <h3 style="font-size:20px;">"I work the leads"</h3>
+          <p style="color:var(--fog-steel);font-size:13px;margin-bottom:16px;">BDC agents, newer salespeople, digital-native managers</p>
+          <ul>
+            <li>Expect modern UX — want to explore</li>
+            <li>UI: Discord, TikTok, Apple Liquid Glass</li>
+            <li>Lead with speed, modern interface, customization</li>
+            <li>Avoid legacy framing, over-explaining basics</li>
+          </ul>
+          <div class="quote" style="margin-top:20px;background:#fff;">
+            <blockquote style="font-size:16px;">"Products are built for buyers, not users."</blockquote>
+            <cite>— NADA observation, Chris Sondesky</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 5: NARRATIVE PILLARS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">05</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Positioning</div>
+    <h2>Four Narrative Pillars</h2>
+
+    <div class="two-col" style="gap:20px;">
+      <div class="card card-honey">
+        <h3>1. One House</h3>
+        <p style="font-style:italic;color:var(--deep-navy);margin-bottom:6px;">"All your conversations, calls, leads, and tasks in one place."</p>
+        <p>Anchored in Charlie Lovell's reaction: "That's what we need. Just to make sure it's all in one house."</p>
+      </div>
+      <div class="card">
+        <h3>2. Your Interface</h3>
+        <p style="font-style:italic;color:var(--deep-navy);margin-bottom:6px;">"~20 layouts built for how your team actually works."</p>
+        <p>At NADA, every product looked like an email inbox. We designed for how people actually work.</p>
+      </div>
+      <div class="card card-success">
+        <h3>3. Free for Clients</h3>
+        <p style="font-style:italic;color:var(--deep-navy);margin-bottom:6px;">"The platform that earns its place by making everything else work better."</p>
+        <p>No new budget line. No new vendor approval. Included with any CarBot service.</p>
+      </div>
+      <div class="card card-navy">
+        <h3>4. AI That Watches</h3>
+        <p style="font-style:italic;color:var(--deep-navy);margin-bottom:6px;">"Appointments schedule themselves. Tasks complete themselves. You just sell."</p>
+        <p>AI reviews every call. Appointments auto-schedule. Nightly review catches what was missed.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 6: GENERATIONAL UI -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">06</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Differentiator</div>
+    <h2>~20 Themes. Three Generations.</h2>
+    <p style="font-size:16px; margin-bottom:32px;">Same data, same capabilities — completely different experience based on what each user already knows.</p>
+
+    <div class="three-col" style="margin-bottom:24px;">
+      <div style="background:var(--navy-light);border-radius:6px;padding:24px;text-align:center;">
+        <div style="font-size:40px;margin-bottom:12px;">📧 📬 🍎</div>
+        <h3 style="font-size:15px;">Seasoned Operators</h3>
+        <p style="font-size:12px;color:var(--fog-steel);">50+ &nbsp;|&nbsp; "The tools you already know"</p>
+        <p style="font-size:13px;margin-top:8px;">Outlook &bull; Gmail &bull; Apple Mail</p>
+      </div>
+      <div style="background:var(--ocean-light);border-radius:6px;padding:24px;text-align:center;">
+        <div style="font-size:40px;margin-bottom:12px;">☁️ 📊 📰</div>
+        <h3 style="font-size:15px;">Mid-Career Professionals</h3>
+        <p style="font-size:12px;color:var(--fog-steel);">30-50 &nbsp;|&nbsp; "The platforms you run your business on"</p>
+        <p style="font-size:13px;margin-top:8px;">Salesforce &bull; Power BI &bull; Social Feed</p>
+      </div>
+      <div style="background:var(--honey-light);border-radius:6px;padding:24px;text-align:center;">
+        <div style="font-size:40px;margin-bottom:12px;">💬 🎵 ✨</div>
+        <h3 style="font-size:15px;">Digital Natives</h3>
+        <p style="font-size:12px;color:var(--fog-steel);">Under 30 &nbsp;|&nbsp; "The apps you actually use"</p>
+        <p style="font-size:13px;margin-top:8px;">Discord &bull; TikTok &bull; Apple Liquid Glass</p>
+      </div>
+    </div>
+
+    <div style="background:var(--light-gray);border-radius:6px;padding:20px 28px;">
+      <p style="font-size:14px;"><strong style="color:var(--deep-navy);">Marketing recommendation:</strong> Showcase one theme from each generation in the primary hero (Outlook + Power BI + Discord). Full gallery on the product page.</p>
+    </div>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 7: CAPABILITIES -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">07</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Platform</div>
+    <h2>Key Capabilities</h2>
+
+    <table>
+      <thead>
+        <tr><th>Capability</th><th>Description</th><th>Audience</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Unified Conversation Timeline</strong></td><td>Every call, text, email, AI interaction — one chronological view per customer</td><td>All</td></tr>
+        <tr><td><strong>Real-Time Call Streaming</strong></td><td>Live transcription via websocket. QA scoring as the call happens.</td><td>GSM, GM</td></tr>
+        <tr><td><strong>AI Voice Agents</strong></td><td>Named personas (Sarah, William, Jenny) with custom voice, prompting, rules</td><td>GSM, IT</td></tr>
+        <tr><td><strong>Visual Workflow Editor</strong></td><td>Drag-and-drop process builder with AI and human steps</td><td>GSM</td></tr>
+        <tr><td><strong>AI Watcher</strong></td><td>Auto-schedules appointments, completes tasks, updates CRM after calls</td><td>GM, GSM</td></tr>
+        <tr><td><strong>Instant Lead Verification</strong></td><td>Outbound AI call within 5 seconds of lead submission</td><td>GSM</td></tr>
+        <tr><td><strong>CarBot Coach</strong></td><td>AI role-play training. 80% monthly active user adoption.</td><td>GSM, GM</td></tr>
+        <tr><td><strong>PII Redaction</strong></td><td>Context-aware — redacts credit cards, preserves employer addresses</td><td>IT</td></tr>
+        <tr><td><strong>Compliance Stack</strong></td><td>10DLC + CNAM + STIR/SHAKEN + TNS branded verification</td><td>IT</td></tr>
+        <tr><td><strong>Multi-Device</strong></td><td>Web, iOS native, Apple TV for showroom dashboards</td><td>All</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 8: COMPETITIVE POSITIONING -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">08</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Landscape</div>
+    <h2>How CXM Compares</h2>
+
+    <table>
+      <thead>
+        <tr><th>Capability</th><th>CarBot CXM</th><th>Bolt-On AI (Impel)</th><th>CRM Native</th><th>Call Tracking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Unified conversation view</td><td class="check">All channels, one timeline</td><td class="dash">Notes pushed to CRM</td><td class="dash">Leads only</td><td class="dash">Calls only</td></tr>
+        <tr><td>AI workflow execution</td><td class="check">AI executes workflow steps</td><td class="dash">AI engages, humans follow up</td><td class="dash">Rules engine</td><td class="dash">None</td></tr>
+        <tr><td>Interface options</td><td class="check">~20 generational themes</td><td class="dash">One UI</td><td class="dash">One UI</td><td class="dash">One UI</td></tr>
+        <tr><td>Real-time call visibility</td><td class="check">Live streaming + transcription</td><td class="dash">No</td><td class="dash">No</td><td class="dash">Post-call analysis</td></tr>
+        <tr><td>Auto-task completion</td><td class="check">AI watchers complete CRM tasks</td><td class="dash">Push notes only</td><td class="dash">Manual</td><td class="dash">None</td></tr>
+        <tr><td>Price</td><td class="check">Free for CarBot clients</td><td class="dash">Separate subscription</td><td class="dash">Included with CRM</td><td class="dash">Separate subscription</td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:28px;">
+      <h3 style="font-size:15px;">Landmines to Plant</h3>
+      <ul style="margin-top:8px;">
+        <li style="font-size:13px;">"Can your AI agents <strong>execute</strong> workflow steps, or do they just generate notes?"</li>
+        <li style="font-size:13px;">"Can different team members see <strong>different interfaces</strong> for the same data?"</li>
+        <li style="font-size:13px;">"What happens <strong>after a call ends</strong>? Does anything update automatically?"</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 9: MESSAGING -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">09</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Messaging</div>
+    <h2>Headlines &amp; CTAs by Audience</h2>
+
+    <table style="margin-bottom:28px;">
+      <thead>
+        <tr><th>Audience</th><th>Headline 1</th><th>Headline 2</th><th>Headline 3</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>GM</strong></td><td>One screen. Your whole operation.</td><td>See your store from anywhere.</td><td>Free for CarBot dealers. Full stop.</td></tr>
+        <tr><td><strong>GSM</strong></td><td>Every lead. Every time. Every way.</td><td>Build your process. It runs itself.</td><td>Five seconds to first contact.</td></tr>
+        <tr><td><strong>IT</strong></td><td>Open. Compliant. Integrated. Free.</td><td>Your CRM stays. Everything improves.</td><td>Built for HIPAA. Ready for automotive.</td></tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr><th>Funnel Stage</th><th>GM</th><th>GSM</th><th>IT</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Top</strong></td><td>See the platform</td><td>Watch instant verification live</td><td>Review the architecture</td></tr>
+        <tr><td><strong>Mid</strong></td><td>Schedule a live demo</td><td>Build your workflow in a demo</td><td>Schedule a technical deep dive</td></tr>
+        <tr><td><strong>Bottom</strong></td><td>Start your free setup</td><td>Get your team on CXM</td><td>Begin CRM integration</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 10: DEMO MOMENTS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">10</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Demo Architecture</div>
+    <h2>Five "Wow" Moments</h2>
+    <p style="margin-bottom:28px;">Built from actual live demos in the MAP and BDC Pros sales conversations.</p>
+
+    <div class="three-col" style="grid-template-columns: 1fr 1fr 1fr; gap:16px; margin-bottom:24px;">
+      <div class="card card-honey">
+        <h3 style="font-size:14px;">The 5-Second Call</h3>
+        <p>Submit a lead. Phone rings in 5 seconds. AI agent engages with customer name + vehicle.</p>
+        <p style="margin-top:8px;"><span class="pill pill-honey">2 min</span></p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:14px;">The Live Dashboard</h3>
+        <p>Call appears on screen with real-time word-by-word transcription as it happens.</p>
+        <p style="margin-top:8px;"><span class="pill pill-ocean">2 min</span></p>
+      </div>
+      <div class="card card-navy">
+        <h3 style="font-size:14px;">The UI Switch</h3>
+        <p>Same customer data: Outlook view → Discord view → social feed. Completely different feel.</p>
+        <p style="margin-top:8px;"><span class="pill pill-navy">2 min</span></p>
+      </div>
+    </div>
+
+    <div class="two-col" style="gap:16px;">
+      <div class="card card-success">
+        <h3 style="font-size:14px;">The AI Watcher</h3>
+        <p>Call ends with appointment → auto-scheduled → confirmation sent → CRM updated. No human touched it.</p>
+        <p style="margin-top:8px;"><span class="pill pill-success">3 min</span></p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:14px;">The Live Listen</h3>
+        <p>Audio arrives on the dashboard before it reaches the telephone — because we're upstream from the caller.</p>
+        <p style="margin-top:8px;"><span class="pill pill-ocean">1 min</span></p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;background:var(--light-gray);border-radius:6px;padding:16px 24px;">
+      <p style="font-size:13px;"><strong style="color:var(--deep-navy);">Demo paths:</strong> 7-min lightning (GMs) &nbsp;|&nbsp; 15-min standard (GSMs) &nbsp;|&nbsp; 30-min deep dive (IT)</p>
+    </div>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 11: CLAIMS LADDER -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">11</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Truth Discipline</div>
+    <h2>Claims Ladder</h2>
+
+    <div class="three-col" style="gap:20px;">
+      <div>
+        <div style="background:var(--success-light);border-left:4px solid var(--success);border-radius:6px;padding:20px 24px;">
+          <h3 style="font-size:14px;color:var(--success);">Tier A: Safe Anywhere</h3>
+          <p style="font-size:11px;color:var(--fog-steel);margin-bottom:12px;">Website, ads, decks, public materials</p>
+          <ul>
+            <li style="font-size:12px;">Free for any CarBot client</li>
+            <li style="font-size:12px;">Unifies all channels in one view</li>
+            <li style="font-size:12px;">~20 interface themes</li>
+            <li style="font-size:12px;">VIN, eLead, DriveCentric integration</li>
+            <li style="font-size:12px;">10DLC + CNAM + STIR/SHAKEN</li>
+            <li style="font-size:12px;">Real-time call transcription</li>
+            <li style="font-size:12px;">8-9 years automotive AI development</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--honey-light);border-left:4px solid var(--honey);border-radius:6px;padding:20px 24px;">
+          <h3 style="font-size:14px;color:var(--warning);">Tier B: Sales Conversation Only</h3>
+          <p style="font-size:11px;color:var(--fog-steel);margin-bottom:12px;">Demos, calls, proposals</p>
+          <ul>
+            <li style="font-size:12px;">AI watchers auto-complete tasks</li>
+            <li style="font-size:12px;">HIPAA-grade architecture (ClearMed)</li>
+            <li style="font-size:12px;">15-18 rooftops on Coach, 80% MAU</li>
+            <li style="font-size:12px;">Sub-5-second instant lead response</li>
+            <li style="font-size:12px;">iOS / Apple TV deployment</li>
+            <li style="font-size:12px;">Replaces standalone email tools</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--navy-light);border-left:4px solid var(--deep-navy);border-radius:6px;padding:20px 24px;">
+          <h3 style="font-size:14px;color:var(--deep-navy);">Tier C: Internal Only</h3>
+          <p style="font-size:11px;color:var(--fog-steel);margin-bottom:12px;">Training, strategy discussions</p>
+          <ul>
+            <li style="font-size:12px;">Open-source release timeline</li>
+            <li style="font-size:12px;">First autonomous deployment date</li>
+            <li style="font-size:12px;">Competitive intel (Impel limitations)</li>
+          </ul>
+          <p style="font-size:11px;color:var(--fog-steel);margin-top:16px;font-style:italic;">Do NOT use in any external materials.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;margin-top:24px;"><strong style="color:var(--deep-navy);">Evidence coverage:</strong> 88% of outward-facing claims backed by transcript evidence tags. 25 total claims mapped.</p>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 12: DELIVERABLES -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">12</div>
+  </div>
+  <div class="slide-body-top">
+    <div class="overline">Pipeline Output</div>
+    <h2>What Was Built</h2>
+
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>Output</th><th>Key Metrics</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Stage 1</strong><br><span style="font-size:11px;color:var(--fog-steel);">Product Intelligence</span></td><td>Intelligence Doc + Glossary + Claim Ledger</td><td>12 capabilities, 16 terms, 25 claims, 100% evidence</td></tr>
+        <tr><td><strong>Stage 2</strong><br><span style="font-size:11px;color:var(--fog-steel);">Market Positioning</span></td><td>Positioning Brief + Claims Ladder</td><td>4 audience matrices, 4 pillars, full messaging hierarchy</td></tr>
+        <tr><td><strong>Stage 3a</strong><br><span style="font-size:11px;color:var(--fog-steel);">Website Copy</span></td><td>Home, Product, 3 Use-Case Pages</td><td>3 hero variants, dual-audience selector, FAQ</td></tr>
+        <tr><td><strong>Stage 3b</strong><br><span style="font-size:11px;color:var(--fog-steel);">Sales Enablement</span></td><td>One-Pagers, Battle Card, Talk Tracks, Emails</td><td>2 one-pagers, 7 objection handlers, 5 email templates</td></tr>
+        <tr><td><strong>Stage 3c</strong><br><span style="font-size:11px;color:var(--fog-steel);">Demo Architecture</span></td><td>Demo Menu, Talk Track Scripts, Backup Plans</td><td>7/15/30-min paths, 6 scripts, 4 objection handlers</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top:28px;gap:20px;">
+      <div class="card card-honey">
+        <h3 style="font-size:14px;">Website Assets</h3>
+        <p>2 HTML pages + CSS styled to CarBot storybook. Role-based hero, theme gallery, pricing card, comparison table.</p>
+      </div>
+      <div class="card card-navy">
+        <h3 style="font-size:14px;">Sales Collateral</h3>
+        <p>4 print-ready HTML documents: GM one-pager, GSM one-pager, battle card, full training guide.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 13: NEXT STEPS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="slide-num">13</div>
+  </div>
+  <div class="slide-body">
+    <div class="overline">What's Next</div>
+    <h2>Next Steps</h2>
+
+    <div class="two-col" style="gap:24px;">
+      <div>
+        <h3 style="margin-bottom:16px;">Immediate</h3>
+        <ul>
+          <li>Integrate CXM pages into carbotdealer.com</li>
+          <li>Distribute sales collateral to reps</li>
+          <li>Run first demo using the 7-min lightning path</li>
+          <li>Collect production data from live dealers</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:16px;">Near-Term</h3>
+        <ul>
+          <li>Upgrade Tier B claims to Tier A as data arrives</li>
+          <li>Define paid value-add pricing tiers</li>
+          <li>Seek permission to attribute customer quotes</li>
+          <li>Build video scripts for the 5 demo moments</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; background: var(--light-gray); border-radius:6px; padding:24px 32px;">
+      <h3 style="font-size:15px; margin-bottom:8px;">Risks to Watch</h3>
+      <ul>
+        <li style="font-size:13px;"><strong>"Free" positioning</strong> — always pair with value, never lead with $0 alone</li>
+        <li style="font-size:13px;"><strong>Open-source timeline</strong> — stays Tier C until public announcement</li>
+        <li style="font-size:13px;"><strong>UI theme gallery</strong> — frame through generational insight, not cosmetic customization</li>
+        <li style="font-size:13px;"><strong>Early deployment</strong> — lean on 6-month internal usage + 18-month Coach data as proxy</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-footer">CarBot Cloud CXM — Go-To-Market Plan</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SLIDE 14: CLOSE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="slide title-slide">
+  <div style="margin-bottom:48px;">
+    <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot" style="height:64px;">
+  </div>
+  <h1>One Platform.<br><span class="accent">Your Way.</span></h1>
+  <p style="margin-top:20px;font-size:16px;">CarBot Cloud CXM</p>
+  <p style="margin-top:12px; color:var(--cloud-alloy);">Free for CarBot clients. Purpose-built for automotive.<br>Compliance-first architecture.</p>
+  <div style="margin-top:48px;">
+    <p style="font-size:13px;color:var(--fog-steel);">github.com/alexcarbot/CXM-gtm &nbsp;|&nbsp; 37 files &nbsp;|&nbsp; 88% evidence coverage</p>
+  </div>
+</div>
+
+</body>
+</html>
