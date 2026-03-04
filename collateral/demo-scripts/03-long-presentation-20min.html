@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CXM Long Demo Script — 20 Minutes</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Prompt:wght@600;700&display=swap');
+
+    :root {
+      --honey: #FFAD00; --honey-light: #FFF8E8; --ocean-wave: #48A9C5;
+      --ocean-light: #E8F4F8; --deep-navy: #1F2A56; --navy-light: #F0EEF5;
+      --midnight-steel: #32344A; --slate-pulse: #5F6172; --tire-gray: #353535;
+      --fog-steel: #8D8E9B; --success: #2E7D32; --success-light: #E8F5E9;
+      --border-gray: #E5E7EB; --divider: #E8E8E8; --light-gray: #F8F9FA;
+    }
+
+    @page { size: letter; margin: 0.5in; }
+    @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .page { box-shadow: none !important; margin: 0 !important; } }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; color: var(--tire-gray); background: #e8e8e8; line-height: 1.6; }
+
+    .page { max-width: 8.5in; background: #fff; margin: 20px auto; padding: 44px 52px; box-shadow: 0 4px 24px rgba(0,0,0,0.1); page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+
+    .doc-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 14px; border-bottom: 3px solid var(--honey); margin-bottom: 24px; }
+    .doc-header .logo { display: flex; align-items: center; gap: 10px; }
+    .doc-header .logo img { height: 28px; }
+    .doc-header .logo-text { font-family: 'Prompt', sans-serif; font-weight: 700; font-size: 14px; color: var(--deep-navy); }
+    .doc-header .logo-text .product { color: var(--ocean-wave); font-weight: 600; font-size: 11px; margin-left: 4px; }
+    .doc-header .meta { text-align: right; }
+    .doc-header .meta .type { font-family: 'Prompt', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--honey); }
+    .doc-header .meta .detail { font-size: 10px; color: var(--fog-steel); }
+
+    h1 { font-family: 'Prompt', sans-serif; font-weight: 700; color: var(--deep-navy); font-size: 22px; letter-spacing: -0.02em; margin-bottom: 4px; }
+    h2 { font-family: 'Prompt', sans-serif; font-weight: 700; color: var(--deep-navy); font-size: 16px; margin: 22px 0 10px; padding-top: 12px; border-top: 1px solid var(--divider); }
+    h3 { font-family: 'Prompt', sans-serif; font-weight: 600; color: var(--deep-navy); font-size: 13px; margin: 12px 0 6px; }
+
+    p { font-size: 12px; color: var(--slate-pulse); margin-bottom: 8px; }
+    .subtitle { font-size: 13px; color: var(--fog-steel); margin-bottom: 20px; }
+
+    .act-header {
+      background: var(--deep-navy);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin: 20px 0 14px;
+    }
+    .act-header h2 { color: #fff; border: none; padding: 0; margin: 0; font-size: 15px; }
+    .act-header p { color: var(--cloud-alloy, #BBBBC3); font-size: 11px; margin: 4px 0 0; }
+
+    .scene { display: grid; grid-template-columns: 64px 1fr; gap: 14px; margin: 12px 0; padding: 12px 0; border-bottom: 1px solid var(--divider); }
+    .scene:last-child { border-bottom: none; }
+    .scene-time { text-align: center; }
+    .time-badge { display: inline-block; background: var(--deep-navy); color: #fff; font-family: 'Prompt', sans-serif; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 100px; }
+    .time-dur { display: block; font-size: 8px; color: var(--fog-steel); margin-top: 3px; }
+
+    .scene-title { font-family: 'Prompt', sans-serif; font-weight: 700; font-size: 13px; color: var(--deep-navy); margin-bottom: 4px; }
+
+    .say { background: var(--ocean-light); border-left: 3px solid var(--ocean-wave); border-radius: 0 4px 4px 0; padding: 7px 11px; margin: 6px 0; font-size: 11.5px; color: var(--tire-gray); line-height: 1.6; }
+    .say .l { font-family: 'Prompt', sans-serif; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ocean-wave); margin-bottom: 2px; }
+
+    .dir { background: var(--honey-light); border-left: 3px solid var(--honey); border-radius: 0 4px 4px 0; padding: 7px 11px; margin: 6px 0; font-size: 11px; color: var(--midnight-steel); }
+    .dir .l { font-family: 'Prompt', sans-serif; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--honey); margin-bottom: 2px; }
+
+    .vis { background: var(--navy-light); border-left: 3px solid var(--deep-navy); border-radius: 0 4px 4px 0; padding: 7px 11px; margin: 6px 0; font-size: 11px; color: var(--slate-pulse); font-style: italic; }
+    .vis .l { font-family: 'Prompt', sans-serif; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--deep-navy); margin-bottom: 2px; font-style: normal; }
+
+    .tip { background: var(--success-light); border-left: 3px solid var(--success); border-radius: 0 4px 4px 0; padding: 7px 11px; margin: 6px 0; font-size: 11px; }
+    .tip .l { font-family: 'Prompt', sans-serif; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--success); margin-bottom: 2px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 11px; margin: 10px 0; }
+    th { text-align: left; padding: 6px 8px; background: var(--deep-navy); color: #fff; font-family: 'Prompt', sans-serif; font-weight: 600; font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; }
+    td { padding: 6px 8px; border-bottom: 1px solid var(--divider); }
+
+    .footer { text-align: center; font-size: 9px; color: var(--fog-steel); margin-top: 16px; padding-top: 10px; border-top: 1px solid var(--divider); }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAGE 1: OVERVIEW + ACT I -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="doc-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="meta">
+      <div class="type">Long Presentation Script</div>
+      <div class="detail">20 Minutes &nbsp;|&nbsp; In-Person or Virtual</div>
+    </div>
+  </div>
+
+  <h1>"The Full Story"</h1>
+  <p class="subtitle">A 20-minute presentation with live demo, commercial storytelling, and feature deep dives. Structured in three acts for natural pacing. Works for qualified prospects, group presentations, or multi-stakeholder meetings.</p>
+
+  <table>
+    <tr><th>Act</th><th>Title</th><th>Duration</th><th>Scenes</th><th>Purpose</th></tr>
+    <tr><td><strong>I</strong></td><td>The Problem & The Moment</td><td>5 min</td><td>1-3</td><td>Set context, deliver "wow", establish credibility</td></tr>
+    <tr><td><strong>II</strong></td><td>The Platform</td><td>9 min</td><td>4-7</td><td>Deep dive into workflow, AI, UI, and integration</td></tr>
+    <tr><td><strong>III</strong></td><td>The Close</td><td>6 min</td><td>8-10</td><td>Pricing, proof, Q&A, and next steps</td></tr>
+  </table>
+
+  <div class="dir">
+    <div class="l">Pre-Demo Checklist</div>
+    <strong>Tabs open:</strong> (1) Carbon Motors demo site with lead form ready (2) CXM dashboard (3) CXM admin/agent config panel (4) CXM workflow editor with a pre-built sales process<br>
+    <strong>Hardware:</strong> Phone face-up on table or visible on camera. Confirm telephony active.<br>
+    <strong>Know your audience:</strong> Who's in the room? GMs get the remote management story. GSMs get the workflow story. IT gets the integration story. Adapt the bridges between scenes.
+  </div>
+
+  <!-- ── ACT I ── -->
+  <div class="act-header">
+    <h2>Act I: The Problem & The Moment</h2>
+    <p>5 minutes &nbsp;|&nbsp; Scenes 1-3 &nbsp;|&nbsp; Set context, deliver "wow"</p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">0:00</span><span class="time-dur">1 min</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 1: Discovery Open</div>
+      <div class="say"><div class="l">Say This</div>"Before I show you anything, I want to make sure I'm showing you what matters. Tell me — what's the biggest gap in your operation right now when it comes to how leads get handled?"</div>
+      <div class="tip"><div class="l">Why This Works</div>Opens with curiosity, not a pitch. Whatever they say becomes the thread you pull through the entire demo. Common answers: speed, consistency, visibility, too many systems.</div>
+      <div class="say"><div class="l">Follow Up</div>"How many systems does your team switch between to work a single lead from first contact to sold?"</div>
+      <div class="say"><div class="l">Bridge</div>"That's exactly what CXM was built for. Let me show you — live, not slides — starting with something that usually stops people in their tracks."</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">1:00</span><span class="time-dur">2 min</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 2: The 5-Second Call (Live Demo)</div>
+      <div class="dir"><div class="l">Stage Direction</div>Navigate to Carbon Motors demo site. Fill in the lead form with your phone number. Pause dramatically.</div>
+      <div class="say"><div class="l">Say This</div>"I'm submitting a lead on this dealer's website right now. When I click send, I want you to watch my phone and count the seconds."</div>
+      <div class="dir"><div class="l">Action</div>Click submit. Phone rings in ~5 seconds. Hold it up. Let the AI speak for 10-15 seconds through the speaker.</div>
+      <div class="say"><div class="l">After the Call</div>"[X] seconds. The AI knew my name, knew the vehicle, and started qualifying me. That's what happens to every lead — at 9am or 2am. Now let me show you where all of that just went."</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">3:00</span><span class="time-dur">2 min</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 3: The Live Dashboard</div>
+      <div class="dir"><div class="l">Stage Direction</div>Switch to CXM dashboard. Show the call that just happened with its real-time transcript.</div>
+      <div class="say"><div class="l">Say This</div>"Here's that call — full transcript, captured word by word as it happened. Not a recording. Not a summary 20 minutes later. Real time."</div>
+      <div class="say"><div class="l">Feature Highlight</div>"If I'd clicked this live-listen button during the call, I would have heard the audio on my computer before I heard it on my phone. Because we're piping upstream from the telephony."</div>
+      <div class="say"><div class="l">Scale It Up</div>"Now imagine 15 calls happening right now across your store. Every one visible here — names, transcripts, departments. You'd know exactly what's happening without leaving your chair."</div>
+      <div class="tip"><div class="l">GM Adaptation</div>For GMs with multiple locations: "This is how you manage Cookeville from Lexington. Every rooftop, one dashboard, real time."</div>
+    </div>
+  </div>
+
+  <div class="footer">CarBot Cloud CXM — Long Presentation Script (20 min) &nbsp;|&nbsp; Page 1 of 4 &nbsp;|&nbsp; February 2026</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAGE 2: ACT II — SCENES 4-5 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="doc-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="meta">
+      <div class="type">Long Presentation (cont.)</div>
+      <div class="detail">Page 2 of 4</div>
+    </div>
+  </div>
+
+  <div class="act-header">
+    <h2>Act II: The Platform</h2>
+    <p>9 minutes &nbsp;|&nbsp; Scenes 4-7 &nbsp;|&nbsp; Deep dive into what CXM does</p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">5:00</span><span class="time-dur">3 min</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 4: The Workflow Builder</div>
+      <div class="say"><div class="l">Transition</div>"That instant call is powerful — but it's just the first step. Let me show you what happens next, and how you control it."</div>
+      <div class="dir"><div class="l">Stage Direction</div>Navigate to the visual workflow editor. Show a pre-built sales BDC workflow.</div>
+      <div class="say"><div class="l">Walk-Through</div>"This is your follow-up process — built visually. Lead comes in. Step one: AI verification call — that's what you just saw. Step two: if no appointment, send a text on day two. Step three: personalized email on day three with the vehicle they asked about. Step four: AI follow-up call on day five. Step five: if still no engagement, human callback."</div>
+      <div class="say"><div class="l">Key Differentiator</div>"Notice these steps. Some are AI. Some are human. You decide which is which. That's what makes this different from every other tool — your CRM can't put an AI agent into a workflow step. CXM can."</div>
+      <div class="vis"><div class="l">Visual Cue</div>Point to specific workflow nodes showing AI agent icons vs. human agent icons. Click into one AI node to show the persona assigned to it.</div>
+      <div class="say"><div class="l">The Insight</div>"You build this once. It runs for every lead, every time, perfectly. No missed steps. No forgotten callbacks. No dependency on who's working today."</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">8:00</span><span class="time-dur">2 min 30s</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 5: The AI Watcher</div>
+      <div class="say"><div class="l">Transition</div>"So the workflow handles the outreach. But what happens after a conversation? This is where CXM gets interesting."</div>
+      <div class="dir"><div class="l">Stage Direction</div>Navigate to a completed call record that includes an appointment set during the conversation.</div>
+      <div class="say"><div class="l">The Story</div>"This call happened earlier. The customer said yes to a 2pm appointment tomorrow. Watch what happened next — without anyone touching anything."</div>
+      <div class="vis"><div class="l">Visual Cue</div>Show the cascade: (1) Appointment auto-created in CRM. (2) Confirmation text auto-sent. (3) Follow-up task auto-completed. (4) Lead stage auto-advanced. Point to each as you narrate.</div>
+      <div class="say"><div class="l">The Punchline</div>"The AI reviewed the call transcript, identified the appointment, scheduled it, sent the confirmation, and marked the task complete. Nobody did anything. And tonight, it'll review every open opportunity at your store and ask: did anything get missed?"</div>
+      <div class="say"><div class="l">Contrast</div>"Most AI tools in this space push a note into your CRM. A note. CXM doesn't push notes — it completes actions."</div>
+    </div>
+  </div>
+
+  <div class="footer">CarBot Cloud CXM — Long Presentation Script (20 min) &nbsp;|&nbsp; Page 2 of 4 &nbsp;|&nbsp; February 2026</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAGE 3: ACT II (cont.) — SCENES 6-7 -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="doc-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="meta">
+      <div class="type">Long Presentation (cont.)</div>
+      <div class="detail">Page 3 of 4</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">10:30</span><span class="time-dur">2 min 30s</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 6: The UI Switch — Generational Design</div>
+      <div class="say"><div class="l">Set Up</div>"I want to show you something we're really proud of — and it came from an observation we made at NADA."</div>
+      <div class="say"><div class="l">The Insight</div>"Every product on the NADA floor had the same UI — it looked like an email inbox. Because those products are designed for the people who buy them: GMs, decision-makers. But the people who use them every day? BDC reps, salespeople, service advisors. They live on Discord and TikTok, not Outlook."</div>
+      <div class="say"><div class="l">The Question</div>"So we asked: what if the same platform looked different to different people? What if a GM saw Outlook and a 23-year-old BDC rep saw Discord?"</div>
+      <div class="dir"><div class="l">Stage Direction</div>Switch the CXM theme live. Show the same customer record in: Outlook view → Discord view → Social Feed → Power BI dashboard → TikTok feed. Keep switching. Let the visual impact land.</div>
+      <div class="say"><div class="l">Key Line</div>"Same customer. Same data. Same capabilities. We built about 20 of these — three generations of interface design. Your seasoned operators get the tools they already know. Your mid-career managers get Salesforce and Power BI. Your digital natives get Discord and TikTok. Nobody learns something new."</div>
+      <div class="tip"><div class="l">Engagement Moment</div>Ask: "Which one would your team want?" This is the moment people lean forward and start imagining their own staff using it. Let them talk.</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">13:00</span><span class="time-dur">1 min</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 7: Compliance & Trust (Brief)</div>
+      <div class="say"><div class="l">If IT Is Present</div>"Quick note on the architecture — because I know this matters. Every outbound number includes 10DLC, CNAM, and STIR/SHAKEN verification. Every call transcript runs through context-aware PII redaction — credit card numbers get removed, but an employer's address stays because it's not sensitive. The architecture was built for HIPAA — our healthcare product, ClearMed, runs on the same stack. SSO is supported."</div>
+      <div class="say"><div class="l">If IT Is Not Present</div>"One thing I'll mention for when your IT team evaluates this: the architecture was built for HIPAA healthcare. Automotive compliance is a subset of that. When your team is ready for a technical deep dive, we do a 30-minute session that covers integration, security, and data flows in detail."</div>
+      <div class="tip"><div class="l">Do Not</div>Don't spend more than 60 seconds here unless IT is the primary audience. The compliance depth is available in the 30-minute path — this is the "trust signal" version.</div>
+    </div>
+  </div>
+
+  <div class="footer">CarBot Cloud CXM — Long Presentation Script (20 min) &nbsp;|&nbsp; Page 3 of 4 &nbsp;|&nbsp; February 2026</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- PAGE 4: ACT III — CLOSE -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="doc-header">
+    <div class="logo">
+      <img src="https://s3.us-east-2.amazonaws.com/carbot.logos/Logo+files/icon-transparent.png" alt="CarBot">
+      <span class="logo-text">CarBot <span class="product">Cloud CXM</span></span>
+    </div>
+    <div class="meta">
+      <div class="type">Long Presentation (cont.)</div>
+      <div class="detail">Page 4 of 4</div>
+    </div>
+  </div>
+
+  <div class="act-header">
+    <h2>Act III: The Close</h2>
+    <p>6 minutes &nbsp;|&nbsp; Scenes 8-10 &nbsp;|&nbsp; Land the value, handle objections, secure next step</p>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">14:00</span><span class="time-dur">2 min</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 8: The Pricing Reveal</div>
+      <div class="say"><div class="l">Recap First</div>"Let me bring this together. You've seen the 5-second lead call. You've seen real-time call intelligence. You've seen a workflow that runs itself with AI and human steps. You've seen the AI complete CRM tasks without anyone touching it. And you've seen the same platform in 20 different interfaces designed for every generation on your team."</div>
+      <div class="say"><div class="l">The Reveal</div>"All of that is included — free — for any dealer on a CarBot service. No new contract. No new budget line. No per-seat charges. Your CarBot rep sets it up."</div>
+      <div class="tip"><div class="l">Let It Breathe</div>Pause after "free." The audience needs a second to process. This is the second "wow" moment after the phone call. Don't rush into qualifications.</div>
+      <div class="say"><div class="l">Context (If Asked)</div>"The platform is free because it makes every other CarBot service more valuable. When your AI agents, your call tracking, and your workflows all live in one place, you use more of what you already have."</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">16:00</span><span class="time-dur">1 min 30s</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 9: Social Proof & The Anchor Quote</div>
+      <div class="say"><div class="l">Transition</div>"I want to share one more thing before I open it up."</div>
+      <div class="say"><div class="l">The Story</div>"We showed this to a dealer partner who runs 10 rooftops across multiple states. He'd just acquired three new stores in a market with no CarMax, no Carvana — a huge opportunity. But he's managing from two states away, and his new team — his words — are 'salt of the earth people' who aren't ready for a technology overhaul."</div>
+      <div class="say"><div class="l">The Reaction</div>"He watched the demo, saw everything in one place, saw the Outlook interface that his team would recognize, and he said:"</div>
+      <div class="say"><div class="l">The Quote</div><strong style="font-size:14px; color:var(--deep-navy);">"That's what we need. Just to make sure it's all in one house."</strong></div>
+      <div class="say"><div class="l">Land It</div>"That's CarBot Cloud CXM. One platform. Your way."</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-time"><span class="time-badge">17:30</span><span class="time-dur">2 min 30s</span></div>
+    <div class="scene-content">
+      <div class="scene-title">Scene 10: Q&A and Next Steps</div>
+      <div class="say"><div class="l">Open</div>"What questions do you have? And honestly — what's your gut reaction to what you just saw?"</div>
+      <div class="tip"><div class="l">Common Objections → Responses</div>
+        <strong>"Does this replace our CRM?"</strong><br>→ "No. Sits on top. Think of it as the windshield, not the engine. All actions push back to your CRM."<br><br>
+        <strong>"My team won't use another tool."</strong><br>→ "That's why there are 20 interfaces. Your GM gets Outlook. Your BDC rep gets Discord. Nobody learns something new."<br><br>
+        <strong>"We're not ready for AI."</strong><br>→ "Start with visibility — all your calls, texts, and leads in one place. No AI required. Layer it in when you're ready."<br><br>
+        <strong>"What about compliance?"</strong><br>→ "10DLC, CNAM, STIR/SHAKEN standard. PII redaction on every transcript. Built for HIPAA."<br><br>
+        <strong>"Can I see it with our data?"</strong><br>→ "Absolutely. Let's connect your CRM and I'll show you your actual leads in CXM."
+      </div>
+      <div class="say"><div class="l">Next Step — Warm</div>"I can have your CarBot rep connect your CRM to a CXM instance this week. You'd see your real leads, your real calls, your real data — not a demo. Want me to set that up?"</div>
+      <div class="say"><div class="l">Next Step — Needs More Time</div>"Let me send you a one-pager and the product page. I'll follow up [day] to schedule a deeper technical review with whoever needs to evaluate integration."</div>
+      <div class="say"><div class="l">Next Step — Multi-Stakeholder</div>"Who else on your team needs to see this? I have a 7-minute version that's perfect for a quick executive overview."</div>
+    </div>
+  </div>
+
+  <h2>Backup Plans</h2>
+  <table>
+    <tr><th>If This Fails</th><th>Do This Instead</th></tr>
+    <tr><td>Live call doesn't ring</td><td>Show pre-completed call in dashboard. "Let me show you what this looks like when it works — which is every day for our live dealers."</td></tr>
+    <tr><td>CRM data doesn't sync live</td><td>Use seeded demo data. Walk through conversation timeline. Explain integration verbally with admin panel showing config.</td></tr>
+    <tr><td>Audience asks about open source</td><td>"We have plans to share more about our platform architecture. For now, I can tell you it integrates openly and we support custom development."</td></tr>
+    <tr><td>Audience is disengaged after Act I</td><td>Skip to Scene 6 (UI Switch) — it's the most visually engaging. Then close.</td></tr>
+    <tr><td>Audience wants deeper tech</td><td>Skip Scene 6 and go to Compliance (Scene 7) expanded. Offer the 30-minute technical deep dive as follow-up.</td></tr>
+  </table>
+
+  <h2>Leave-Behind Materials</h2>
+  <table>
+    <tr><th>Audience</th><th>Send After</th></tr>
+    <tr><td>GM / Operating Partner</td><td>GM one-pager + product page link + "Talk to your CarBot rep" CTA</td></tr>
+    <tr><td>GSM / BDC Manager</td><td>GSM one-pager + Coach demo link + "Try a coaching session" CTA</td></tr>
+    <tr><td>IT / Enterprise</td><td>Technical architecture summary + "Schedule a 30-min deep dive" CTA</td></tr>
+    <tr><td>Mixed audience</td><td>Both one-pagers + battle card (if appropriate for internal champion)</td></tr>
+  </table>
+
+  <div class="footer">CarBot Cloud CXM — Long Presentation Script (20 min) &nbsp;|&nbsp; Page 4 of 4 &nbsp;|&nbsp; February 2026</div>
+</div>
+
+</body>
+</html>
