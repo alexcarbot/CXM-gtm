@@ -4,3 +4,5 @@ node_modules/
 *.log
 .cursor/
 dist/
+.vercel/
+.vercel
