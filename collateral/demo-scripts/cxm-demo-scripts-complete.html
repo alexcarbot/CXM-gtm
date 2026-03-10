@@ -156,6 +156,15 @@
     .callout h3 { margin: 0 0 6px; font-size: 12px; }
     .callout p { font-size: 11px; margin: 3px 0; }
 
+    /* ─── Images ─── */
+    .scene-img { width: 100%; border-radius: 6px; margin: 10px 0; border: 1px solid var(--border-gray); }
+    .scene-img-half { width: 48%; border-radius: 6px; margin: 6px 1%; border: 1px solid var(--border-gray); }
+    .img-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+    .img-row img { flex: 1 1 45%; min-width: 200px; border-radius: 6px; border: 1px solid var(--border-gray); }
+    .visual-ref { background: var(--navy-light); border-radius: 6px; padding: 12px; margin: 10px 0; text-align: center; }
+    .visual-ref img { max-width: 100%; border-radius: 6px; }
+    .visual-ref .caption { font-size: 10px; color: var(--fog-steel); margin-top: 6px; font-style: italic; }
+
     /* ─── Footer ─── */
     .footer { text-align: center; font-size: 9px; color: var(--fog-steel); margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--divider); }
   </style>
@@ -212,6 +221,7 @@
     <div class="scene-time"><span class="time-badge">0:00</span><span class="time-dur">7 sec</span></div>
     <div class="scene-content">
       <div class="scene-title">Open — Empty Dealership</div>
+      <div class="visual-ref"><img src="assets/storyboard-915pm-scene1.png" alt="Storyboard: Empty dealership at night"><div class="caption">Storyboard Frame 1 — Empty lot, one car under streetlight, phone glowing</div></div>
       <div class="say"><div class="l">Narration</div>"It's 9:15 on a Tuesday night. Your showroom is dark. Your team went home two hours ago."</div>
       <div class="vis"><div class="l">Visual</div>Empty dealership lot. Lights off. One car under a streetlight. A phone screen glows — someone browsing a dealer website from their couch.</div>
     </div>
@@ -221,6 +231,7 @@
     <div class="scene-time"><span class="time-badge">0:07</span><span class="time-dur">6 sec</span></div>
     <div class="scene-content">
       <div class="scene-title">The Lead — Phone Rings</div>
+      <div class="visual-ref"><img src="assets/storyboard-915pm-scene2.png" alt="Storyboard: Phone rings within 5 seconds"><div class="caption">Storyboard Frame 2 — Five seconds later, the phone rings</div></div>
       <div class="say"><div class="l">Narration</div>"But a customer just found the car they want. They submitted a lead. And in five seconds..."</div>
       <div class="vis"><div class="l">Visual</div>Close-up: phone rings. Caller ID shows the dealership name. Customer looks surprised — picks up.</div>
     </div>
@@ -238,6 +249,7 @@
     <div class="scene-time"><span class="time-badge">0:21</span><span class="time-dur">7 sec</span></div>
     <div class="scene-content">
       <div class="scene-title">The Cascade — Automation in Motion</div>
+      <div class="visual-ref"><img src="assets/storyboard-915pm-scene3.png" alt="Storyboard: Automation cascade"><div class="caption">Storyboard Frame 3 — Calendar, text, CRM, and task all update simultaneously</div></div>
       <div class="say"><div class="l">Narration</div>"The customer says yes. And without a single person touching a keyboard..."</div>
       <div class="vis"><div class="l">Visual</div>Split screen animation — CXM dashboard: appointment auto-populates. CRM updates. Confirmation text sends. Task marks complete. All happening simultaneously.</div>
     </div>
@@ -255,6 +267,7 @@
     <div class="scene-time"><span class="time-badge">0:34</span><span class="time-dur">10 sec</span></div>
     <div class="scene-content">
       <div class="scene-title">The Morning After</div>
+      <div class="visual-ref"><img src="assets/storyboard-915pm-scene4.png" alt="Storyboard: Morning after — salesperson with CXM on phone"><div class="caption">Storyboard Frame 4 — They just have to shake their hand</div></div>
       <div class="say"><div class="l">Narration</div>"When your salesperson walks in the next morning, they already know the customer's name, the car they want, and the conversation that happened. They just have to shake their hand."</div>
       <div class="vis"><div class="l">Visual</div>Morning. Dealership opens. Salesperson opens CXM on their phone — sees the full timeline. Smiles.</div>
     </div>
@@ -318,6 +331,7 @@
     <div class="scene-time"><span class="time-badge">0:00</span><span class="time-dur">10 sec</span></div>
     <div class="scene-content">
       <div class="scene-title">Meet Mike — The Veteran</div>
+      <div class="visual-ref"><img src="assets/storyboard-samedata-split.png" alt="Storyboard: Mike and Jess split screen"><div class="caption">Storyboard — Mike (Outlook) and Jess (Discord), same customer data</div></div>
       <div class="vis"><div class="l">Visual</div>A dealership GM, mid-50s, at his desk. Opens CXM — looks exactly like Outlook. Nods approvingly.</div>
       <div class="say"><div class="l">Narration</div>"Mike's been running dealerships for 25 years. He likes what he knows."</div>
     </div>
@@ -336,6 +350,7 @@
     <div class="scene-time"><span class="time-badge">0:20</span><span class="time-dur">10 sec</span></div>
     <div class="scene-content">
       <div class="scene-title">The Split Screen — Same Data</div>
+      <div class="visual-ref"><img src="assets/ui-mockup-outlook.png" alt="CXM Outlook Theme mockup"><div class="caption">UI Mockup — CXM Outlook Theme (Seasoned Operators)</div></div>
       <div class="vis"><div class="l">Visual</div>Split screen: Mike on left (Outlook), Jess on right (Discord). The SAME customer record is visible. Same name, same timeline. Different interface.</div>
       <div class="say"><div class="l">Narration</div>"Same customer. Same data. Same platform."</div>
     </div>
@@ -345,6 +360,8 @@
     <div class="scene-time"><span class="time-badge">0:26</span><span class="time-dur">8 sec</span></div>
     <div class="scene-content">
       <div class="scene-title">Theme Montage</div>
+      <div class="visual-ref"><img src="assets/ui-mockup-discord.png" alt="CXM Discord Theme mockup"><div class="caption">UI Mockup - CXM Discord Theme (Digital Natives)</div></div>
+      <div class="visual-ref"><img src="assets/ui-mockup-discord.png" alt="CXM Discord Theme mockup"><div class="caption">UI Mockup - CXM Discord Theme (Digital Natives)</div></div>
       <div class="vis"><div class="l">Visual</div>Rapid-fire: Power BI on a wall TV. TikTok feed on a phone. Salesforce on a laptop. Apple Liquid Glass on iPad. Social feed on Apple TV. Each showing the same live call data.</div>
       <div class="say"><div class="l">Narration</div>"Twenty interfaces. Three generations. One platform."</div>
     </div>

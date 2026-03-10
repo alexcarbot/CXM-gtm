@@ -184,60 +184,102 @@
     <div class="section-header">
       <div class="overline">Your Interface</div>
       <h2>~20 Themes. Three Generations. One Platform.</h2>
-      <p>At NADA, every product looked like an email inbox — designed for buyers, not users. We designed for how people actually work.</p>
+      <p>Pick your favorite artist. We'll show you CXM in the interface that fits.</p>
     </div>
 
-    <div class="theme-gallery">
-      <!-- Seasoned Operators -->
-      <div class="theme-card gen-seasoned">
-        <div class="theme-preview">📧</div>
-        <div class="theme-name">Outlook</div>
-        <div class="theme-gen">Seasoned Operators</div>
-      </div>
-      <div class="theme-card gen-seasoned">
-        <div class="theme-preview">📬</div>
-        <div class="theme-name">Gmail</div>
-        <div class="theme-gen">Seasoned Operators</div>
-      </div>
-      <div class="theme-card gen-seasoned">
-        <div class="theme-preview">🍎</div>
-        <div class="theme-name">Apple Mail</div>
-        <div class="theme-gen">Seasoned Operators</div>
-      </div>
+    <!-- Music Selector -->
+    <div style="display:flex;gap:16px;justify-content:center;margin-bottom:40px;flex-wrap:wrap;">
+      <button class="role-btn active" onclick="selectGen('acdc')" id="btn-acdc">
+        <span class="role-icon">⚡</span>
+        AC/DC
+      </button>
+      <button class="role-btn" onclick="selectGen('sublime')" id="btn-sublime">
+        <span class="role-icon">🌴</span>
+        Sublime
+      </button>
+      <button class="role-btn" onclick="selectGen('swift')" id="btn-swift">
+        <span class="role-icon">✨</span>
+        Taylor Swift
+      </button>
+    </div>
 
-      <!-- Mid-Career -->
-      <div class="theme-card gen-midcareer">
-        <div class="theme-preview">☁️</div>
-        <div class="theme-name">Salesforce</div>
-        <div class="theme-gen">Mid-Career Professionals</div>
+    <!-- AC/DC Generation -->
+    <div id="gen-acdc" class="gen-panel">
+      <div style="text-align:center;margin-bottom:24px;">
+        <p style="font-size:1rem;color:var(--deep-navy);font-weight:600;">You grew up on vinyl and know every riff on <em>Back in Black</em>.</p>
+        <p style="color:var(--fog-steel);">You want tools that feel like what you already use every day. No learning curve. No surprises.</p>
       </div>
-      <div class="theme-card gen-midcareer">
-        <div class="theme-preview">📊</div>
-        <div class="theme-name">Power BI</div>
-        <div class="theme-gen">Mid-Career Professionals</div>
+      <div class="theme-gallery">
+        <div class="theme-card gen-seasoned">
+          <div class="theme-preview">📧</div>
+          <div class="theme-name">Outlook</div>
+          <div class="theme-gen">Your email. Your CXM.</div>
+        </div>
+        <div class="theme-card gen-seasoned">
+          <div class="theme-preview">📊</div>
+          <div class="theme-name">Power BI</div>
+          <div class="theme-gen">The dashboard you already read.</div>
+        </div>
+        <div class="theme-card gen-seasoned">
+          <div class="theme-preview">☁️</div>
+          <div class="theme-name">Salesforce</div>
+          <div class="theme-gen">The enterprise view you trust.</div>
+        </div>
       </div>
-      <div class="theme-card gen-midcareer">
-        <div class="theme-preview">📰</div>
-        <div class="theme-name">Social Feed</div>
-        <div class="theme-gen">Mid-Career Professionals</div>
-      </div>
+    </div>
 
-      <!-- Digital Natives -->
-      <div class="theme-card gen-native">
-        <div class="theme-preview">💬</div>
-        <div class="theme-name">Discord</div>
-        <div class="theme-gen">Digital Natives</div>
+    <!-- Sublime Generation -->
+    <div id="gen-sublime" class="gen-panel" style="display:none;">
+      <div style="text-align:center;margin-bottom:24px;">
+        <p style="font-size:1rem;color:var(--deep-navy);font-weight:600;">You know all the words to <em>Santeria</em> and your playlist is still undefeated.</p>
+        <p style="color:var(--fog-steel);">You want something clean and modern that just works — no clutter, no gimmicks.</p>
       </div>
-      <div class="theme-card gen-native">
-        <div class="theme-preview">🎵</div>
-        <div class="theme-name">TikTok Feed</div>
-        <div class="theme-gen">Digital Natives</div>
+      <div class="theme-gallery">
+        <div class="theme-card gen-midcareer">
+          <div class="theme-preview">📬</div>
+          <div class="theme-name">Gmail</div>
+          <div class="theme-gen">Clean, fast, everything in one tab.</div>
+        </div>
+        <div class="theme-card gen-midcareer">
+          <div class="theme-preview">📰</div>
+          <div class="theme-name">Social Feed</div>
+          <div class="theme-gen">Scroll your leads like your feed.</div>
+        </div>
+        <div class="theme-card gen-midcareer">
+          <div class="theme-preview">📋</div>
+          <div class="theme-name">Notion</div>
+          <div class="theme-gen">Organized, flexible, yours.</div>
+        </div>
       </div>
-      <div class="theme-card gen-native">
-        <div class="theme-preview">✨</div>
-        <div class="theme-name">Apple Liquid Glass</div>
-        <div class="theme-gen">Digital Natives</div>
+    </div>
+
+    <!-- Taylor Swift Generation -->
+    <div id="gen-swift" class="gen-panel" style="display:none;">
+      <div style="text-align:center;margin-bottom:24px;">
+        <p style="font-size:1rem;color:var(--deep-navy);font-weight:600;">You have an era for every mood and your screen time report is personal.</p>
+        <p style="color:var(--fog-steel);">You want tools that feel like the apps you actually live in. Fast, visual, no tutorials needed.</p>
       </div>
+      <div class="theme-gallery">
+        <div class="theme-card gen-native">
+          <div class="theme-preview">🍎</div>
+          <div class="theme-name">Apple Mail</div>
+          <div class="theme-gen">Minimal, clean, swipe to act.</div>
+        </div>
+        <div class="theme-card gen-native">
+          <div class="theme-preview">💬</div>
+          <div class="theme-name">Discord</div>
+          <div class="theme-gen">Channels, threads, real-time.</div>
+        </div>
+        <div class="theme-card gen-native">
+          <div class="theme-preview">🎵</div>
+          <div class="theme-name">TikTok Feed</div>
+          <div class="theme-gen">Scroll through leads, swipe to act.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <p style="font-size:0.875rem;color:var(--fog-steel);">Same data. Same capabilities. Same platform. Just the interface that feels like home.</p>
     </div>
   </div>
 </section>
@@ -332,6 +374,18 @@ function selectRole(role) {
     document.querySelectorAll('.role-btn')[1].classList.add('active');
     document.getElementById('role-leads').style.display = 'block';
   }
+}
+
+function selectGen(gen) {
+  document.getElementById('btn-acdc').classList.remove('active');
+  document.getElementById('btn-sublime').classList.remove('active');
+  document.getElementById('btn-swift').classList.remove('active');
+  document.getElementById('gen-acdc').style.display = 'none';
+  document.getElementById('gen-sublime').style.display = 'none';
+  document.getElementById('gen-swift').style.display = 'none';
+
+  document.getElementById('btn-' + gen).classList.add('active');
+  document.getElementById('gen-' + gen).style.display = 'block';
 }
 </script>
 
