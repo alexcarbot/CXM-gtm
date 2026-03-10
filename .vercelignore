@@ -1,0 +1,7 @@
+carbot/
+docs/
+outputs/
+schemas/
+templates/
+transcripts/
+*.md
