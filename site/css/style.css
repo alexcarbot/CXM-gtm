@@ -496,12 +496,98 @@ img { max-width: 100%; height: auto; }
 .footer {
   background: var(--deep-navy);
   color: var(--cloud-alloy);
-  padding: 40px 0;
-  text-align: center;
+  padding: 56px 0 32px;
   font-size: 0.8125rem;
 }
 
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.footer-brand p {
+  color: var(--fog-steel);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  margin-top: 12px;
+  max-width: 260px;
+}
+
+.footer-brand .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.footer-brand .footer-logo img { height: 28px; width: auto; }
+
+.footer-brand .footer-wordmark {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer-brand .footer-product {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ocean-wave);
+  margin-left: 4px;
+}
+
+.footer-col h4 {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cloud-alloy);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col ul li a {
+  color: var(--fog-steel);
+  font-size: 0.8125rem;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer-col ul li a:hover { color: var(--honey); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom p { color: var(--fog-steel); font-size: 0.75rem; }
+
 .footer a { color: var(--honey); }
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
 
 /* ── CTA Band ── */
 .cta-band {
@@ -541,6 +627,7 @@ img { max-width: 100%; height: auto; }
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
+  .nav-mobile-links { display: flex; flex-direction: column; gap: 12px; padding: 16px 24px; border-top: 1px solid var(--divider); background: #fff; }
   .hero { padding: 48px 0 40px; }
   .section { padding: 48px 0; }
   .card-grid { grid-template-columns: 1fr; }
